@@ -26,9 +26,9 @@ void sort(T a[], int n)
 }
 
 template <typename T>
-void printArray(T a[], int n)
+void printArray(T a[], int size)
 {
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < size; i++)
         cout << a[i] << " ";
     cout << endl;
 }
