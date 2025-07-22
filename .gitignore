@@ -129,6 +129,9 @@ $RECYCLE.BIN/
 *.msm
 *.msp
 
+*.dSYM
+.vscode
+
 # Windows shortcuts
 *.lnk
 

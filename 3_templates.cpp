@@ -1,18 +1,15 @@
-// Example of templates in C++
+// Ejemplo de plantillas (templates) en C++
 #include <iostream>
 
-//reference: https://www.geeksforgeeks.org/templates-cpp/
-//reference: https://learn.microsoft.com/es-es/cpp/cpp/templates-cpp?view=msvc-170
-
-//https://pythontutor.com/visualize.html#code=//%20Example%20of%20templates%20in%20C%2B%2B%0A%23include%20%3Ciostream%3E%0A%0Ausing%20namespace%20std%3B%0A%0Atemplate%20%3Ctypename%20T%3E%0Avoid%20sort%28T%20a%5B%5D,%20int%20n%29%0A%7B%0A%20%20%20%20for%20%28int%20i%20%3D%200%3B%20i%20%3C%20n%3B%20i%2B%2B%29%0A%20%20%20%20%20%20%20%20for%20%28int%20j%20%3D%20i%3B%20j%20%3C%20n%3B%20j%2B%2B%29%0A%20%20%20%20%20%20%20%20%20%20%20%20if%20%28a%5Bj%5D%20%3C%20a%5Bi%5D%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20swap%28a%5Bi%5D,%20a%5Bj%5D%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D%20%20%20%20%20%20%20%20%20%20%20%20%0A%7D%0A%0Atemplate%20%3Ctypename%20T%3E%0Avoid%20printArray%28T%20a%5B%5D,%20int%20n%29%0A%7B%0A%20%20%20%20for%20%28int%20i%20%3D%200%3B%20i%20%3C%20n%3B%20i%2B%2B%29%0A%20%20%20%20%20%20%20%20cout%20%3C%3C%20a%5Bi%5D%20%3C%3C%20%22%20%22%3B%0A%20%20%20%20cout%20%3C%3C%20endl%3B%0A%7D%0A%0Atemplate%20%3Ctypename%20T%3E%0AT%20myMax%28T%20x,%20T%20y%29%0A%7B%0A%20%20return%20%28x%20%3E%20y%29%20%3F%20x%20%3A%20y%3B%0A%7D%0A%0A//We%20can%20also%20use%20templates%20with%20multiple%20parameters.%0A//For%20example,%20we%20can%20have%20a%20generic%20function%20%0Atemplate%20%3Ctypename%20T,%20typename%20U%3E%0Avoid%20myFunction%28T%20x,%20U%20y%29%0A%7B%0A%20%20%20%20cout%20%3C%3C%20x%20%3C%3C%20%22%20%22%20%3C%3C%20y%20%3C%3C%20endl%3B%0A%7D%0A%0A//We%20can%20also%20use%20templates%20with%20structs.%0Atemplate%20%3Ctypename%20T%3E%0Astruct%20Pair%0A%7B%0A%20%20%20%20T%20x,%20y%3B%0A%20%20%20%20Pair%28T%20i,%20T%20j%29%0A%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20x%20%3D%20i%3B%0A%20%20%20%20%20%20%20%20y%20%3D%20j%3B%0A%20%20%20%20%7D%0A%0A%20%20%20%20T%20getMax%28%29%20%7B%0A%20%20%20%20%20%20%20%20return%20%28x%20%3E%20y%29%20%3F%20x%20%3A%20y%3B%0A%20%20%20%20%7D%3B%0A%7D%3B%0A%0A%0Aint%20main%20%28%29%20%7B%0A%0A%20%20%20%20int%20a%5B5%5D%20%3D%20%7B%2010,%2050,%2030,%2040,%2020%20%7D%3B%0A%20%20%20%20int%20n%20%3D%20sizeof%28a%29%20/%20sizeof%28a%5B0%5D%29%3B%0A%0A%20%20%20%20sort%28a,%20n%29%3B%0A%0A%20%20%20%20cout%20%3C%3C%20%22Sorted%20array%20using%20int%3A%20%22%3B%0A%20%20%20%20printArray%28a,%20n%29%3B%0A%0A%20%20%20%20float%20b%5B5%5D%20%3D%20%7B%2010.5,%2050.5,%2030.5,%2040.5,%2020.5%20%7D%3B%0A%20%20%20%20n%20%3D%20sizeof%28b%29%20/%20sizeof%28b%5B0%5D%29%3B%0A%0A%20%20%20%20sort%28b,%20n%29%3B%0A%0A%20%20%20%20cout%20%3C%3C%20%22Sorted%20array%20using%20float%3A%20%22%3B%0A%20%20%20%20printArray%28b,%20n%29%3B%0A%20%20%20%20%0A%20%20%20%20cout%20%3C%3C%20%22Showing%20max%20between%20int%203%20and%207%22%20%3C%3C%20myMax%3Cint%3E%283,%207%29%20%3C%3C%20endl%3B%20//%20Call%20myMax%20for%20int%0A%20%20%20%20cout%20%3C%3C%20myMax%3Cdouble%3E%283.0,%207.0%29%20%3C%3C%20endl%3B%20//%20call%20myMax%20for%20double%0A%20%20%20%20cout%20%3C%3C%20myMax%3Cchar%3E%28'g',%20'e'%29%20%3C%3C%20endl%3B%20//%20call%20myMax%20for%20char%0A%0A%20%20%20%20myFunction%2810,%2020.5%29%3B%0A%20%20%20%20myFunction%3Cchar,%20double%3E%28'A',%2020.5%29%3B%0A%0A%20%20%20%20Pair%3Cint%3E%20p1%2810,%2020%29%3B%0A%20%20%20%20cout%20%3C%3C%20p1.getMax%28%29%20%3C%3C%20endl%3B%0A%0A%20%20%20%20Pair%3Cdouble%3E%20p2%2810.5,%2020.5%29%3B%0A%20%20%20%20cout%20%3C%3C%20p2.getMax%28%29%20%3C%3C%20endl%3B%0A%20%20%20%20%0A%0A%0A%20%20return%200%3B%0A%7D&cumulative=false&heapPrimitives=nevernest&mode=edit&origin=opt-frontend.js&py=cpp_g%2B%2B9.3.0&rawInputLstJSON=%5B%5D&textReferences=false
-
+//referencia: https://www.geeksforgeeks.org/templates-cpp/
+//referencia: https://learn.microsoft.com/es-es/cpp/cpp/templates-cpp?view=msvc-170
 using namespace std;
 
-//In C++, templates are a powerful tool for generic programming.
-//The basic idea behind C++ templates is to allow the programmer to create a template class or function that can be used with many different types.
-//For example, a software company may need sort() for different data types.
-//Rather than writing and maintaining the multiple codes, we can write one sort() and pass data type as a parameter.
-//The compiler generates the appropriate code for the type specified.
+//En C++, las plantillas (templates) son una herramienta poderosa para la programación genérica.
+//La idea básica detrás de las plantillas de C++ es permitir al programador crear una clase o función plantilla que pueda ser usada con muchos tipos diferentes.
+//Por ejemplo, una empresa de software puede necesitar sort() para diferentes tipos de datos.
+//En lugar de escribir y mantener múltiples códigos, podemos escribir un sort() y pasar el tipo de dato como parámetro.
+//El compilador genera el código apropiado para el tipo especificado.
 
 template <typename T>
 void sort(T a[], int n)
@@ -40,15 +37,15 @@ T myMax(T x, T y)
     return (x > y) ? x : y;
 }
 
-//We can also use templates with multiple parameters.
-//For example, we can have a generic function 
+//También podemos usar plantillas con múltiples parámetros.
+//Por ejemplo, podemos tener una función genérica 
 template <typename T, typename U>
 void myFunction(T x, U y)
 {
     cout << x << " " << y << endl;
 }
 
-//We can also use templates with structs.
+//También podemos usar plantillas con estructuras.
 template <typename T>
 struct Pair
 {
@@ -67,7 +64,7 @@ struct Pair
 
 int main () {
 
-    //When we call sort() with an integer array, the compiler creates a function using int as the data type.
+    //Cuando llamamos sort() con un arreglo de enteros, el compilador crea una función usando int como tipo de dato.
     int a[5] = { 10, 50, 30, 40, 20 };
     int n = sizeof(a) / sizeof(a[0]);
 
@@ -76,7 +73,7 @@ int main () {
     cout << "Sorted array using int: ";
     printArray(a, n);
 
-    //When we call sort() with a float array, the compiler creates another function using float as the data type.
+    //Cuando llamamos sort() con un arreglo de float, el compilador crea otra función usando float como tipo de dato.
     float b[5] = { 10.5, 50.5, 30.5, 40.5, 20.5 };
     n = sizeof(b) / sizeof(b[0]);
 
@@ -85,24 +82,24 @@ int main () {
     cout << "Sorted array using float: ";
     printArray(b, n);
     
-    //We can also call myMax() with different data types. 
-    //Notice that between the function name and the parameter list, there is <typename T>.
-    //This is necessary to tell the compiler that it is a template but they are not mandatory.
-    cout << "Showing max between int 3 and 7" << myMax<int>(3, 7) << endl; // Call myMax for int
-    cout << myMax<double>(3.0, 7.0) << endl; // call myMax for double
-    cout << myMax<char>('g', 'e') << endl; // call myMax for char
+    //También podemos llamar myMax() con diferentes tipos de datos. 
+    //Nota que entre el nombre de la función y la lista de parámetros, hay <typename T>.
+    //Esto es necesario para decirle al compilador que es una plantilla, pero no son obligatorios.
+    cout << "Showing max between int 3 and 7" << myMax<int>(3, 7) << endl; // Llama myMax para int
+    cout << myMax<double>(3.0, 7.0) << endl; // llama myMax para double
+    cout << myMax<char>('g', 'e') << endl; // llama myMax para char
 
-    //We can also call myFunction() with different data types.
-    //Notice that between the function name and the parameter list, there is <typename T, typename U>.
-    //This is necessary to tell the compiler that it is a template but they are not mandatory.
+    //También podemos llamar myFunction() con diferentes tipos de datos.
+    //Nota que entre el nombre de la función y la lista de parámetros, hay <typename T, typename U>.
+    //Esto es necesario para decirle al compilador que es una plantilla, pero no son obligatorios.
     myFunction(10, 20.5);
     myFunction<char, double>('A', 20.5);
 
-    //We can also use templates with structs.
-    //Notice that between the struct name and the parameter list, there is <typename T>.
-    //This is necessary to tell the compiler that it is a template.
-    //In this case we are telling to the compiler that we have a Pair of int,
-    //in the case of structs it is mandatory to specify the data type.
+    //También podemos usar plantillas con estructuras.
+    //Nota que entre el nombre de la estructura y la lista de parámetros, hay <typename T>.
+    //Esto es necesario para decirle al compilador que es una plantilla.
+    //En este caso le estamos diciendo al compilador que tenemos un Pair de int,
+    //en el caso de las estructuras es obligatorio especificar el tipo de dato.
     Pair<int> p1(10, 20);
     cout << p1.getMax() << endl;
 
@@ -113,3 +110,34 @@ int main () {
 
   return 0;
 }
+
+/*
+RESUMEN: ¿Qué son las plantillas (templates)?
+
+1. PROGRAMACIÓN GENÉRICA:
+   - Las plantillas permiten escribir código que funciona con cualquier tipo de dato
+   - El compilador genera código específico para cada tipo usado
+   - Evita duplicación de código para diferentes tipos de datos
+
+2. TIPOS DE PLANTILLAS:
+   - Plantillas de función: template <typename T>
+   - Plantillas con múltiples parámetros: template <typename T, typename U>
+   - Plantillas de estructura/clase: struct/class con tipos genéricos
+
+3. VENTAJAS:
+   - Reutilización de código
+   - Type safety (seguridad de tipos)
+   - Eficiencia: código optimizado para cada tipo
+   - Flexibilidad: funciona con tipos built-in y definidos por el usuario
+
+4. INSTANCIACIÓN:
+   - Explícita: myMax<int>(3, 7)
+   - Implícita: myFunction(10, 20.5) - el compilador deduce los tipos
+   - Para estructuras: siempre explícita Pair<int> p1(10, 20)
+
+CONCEPTOS CLAVE:
+- typename vs class (preferir typename para consistencia)
+- Instanciación automática del compilador
+- Templates = paradigma de programación genérica
+- Diferencia entre plantillas de función y de estructura
+*/

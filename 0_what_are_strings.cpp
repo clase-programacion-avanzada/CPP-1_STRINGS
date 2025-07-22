@@ -1,4 +1,4 @@
-// comparing apples with apples
+// comparando peras con peras
 #include <iostream>
 //https://stackoverflow.com/questions/9257665/difference-between-string-and-string-h
 #include <string.h>
@@ -10,22 +10,22 @@ using namespace std;
 int main ()
 {
 
-    //In the old days of C, strings were simply arrays of characters.
-    //The problem with this approach is that you have to keep track of the length of the string yourself.
-    //If you forget to do this, you can easily overflow the array, causing your program to crash.
+    //En los viejos tiempos de C, las cadenas eran simplemente arreglos de caracteres.
+    //El problema con este enfoque es que tienes que llevar el control del tamaño de la cadena por ti mismo.
+    //Si olvidas hacer esto, puedes fácilmente desbordar el arreglo, causando que tu programa se cuelgue.
 
-    //char myString[255] = "Hello"; // 255 characters is more than enough for "Hello"
+    //char myString[255] = "Hello"; // 255 caracteres es más que suficiente para "Hello"
     char myString[255];
 
-    strcpy(myString, "Hello"); // copy "Hello" into myString
+    strcpy(myString, "Hello"); // copia "Hello" en myString
 
-    //In this case what is being stored in myString is the characters H, e, l, l, o, and \0.
-    //The \0 is called a null terminator, and is how C knows where the end of the string is.
+    //En este caso lo que se está almacenando en myString son los caracteres H, e, l, l, o, y \0.
+    //El \0 se llama terminador nulo, y es como C sabe dónde termina la cadena.
 
-    //The null terminator is why we need to allocate 255 characters for a string that only contains 5 characters.
+    //El terminador nulo es por qué necesitamos asignar 255 caracteres para una cadena que solo contiene 5 caracteres.
     cout << "myString value is now: " << myString << endl;
 
-    //if we try to print the string without null terminating it, we get garbage
+    //si tratamos de imprimir la cadena sin el terminador nulo, obtenemos basura
     cout << "Printing without null terminating it: ";
     for (int i = 0; i < 255; i++)
     {
@@ -33,56 +33,73 @@ int main ()
     }
     cout << endl;
 
-    //As you may have guessed, this is a very error prone way to work with strings.
-    // if we wan to concatenate two strings we need to do this
+    //Como puedes haber imaginado, esta es una forma muy propensa a errores de trabajar con cadenas.
+    // si queremos concatenar dos cadenas necesitamos hacer esto
     char myString2[255] = " World";
     cout << "Concatenating two strings: " << myString << " and" << myString2 << endl;
-    strcat(myString, myString2); // myString now contains "Hello World"
+    strcat(myString, myString2); // myString ahora contiene "Hello World"
     cout << "myString value is now: " << myString << endl;
 
-    //if we want to get the length of a string we need to do this
+    //si queremos obtener la longitud de una cadena necesitamos hacer esto
     int length = 0;
-    strlen(myString); // returns 11
+    strlen(myString); // retorna 11
     cout << "myString length is: "<< strlen(myString) << endl;
 
-    //if we want to compare two strings we need to do this
-    cout << "String comparison result is: " << strcmp(myString, myString2)<< endl; // returns 0 if equal, < 0 if myString comes before myString2, > 0 if myString comes after myString2
+    //si queremos comparar dos cadenas necesitamos hacer esto
+    cout << "String comparison result is: " << strcmp(myString, myString2)<< endl; // retorna 0 si son iguales, < 0 si myString viene antes que myString2, > 0 si myString viene después que myString2
 
 
-    //if we want to copy a string we need to do this
+    //si queremos copiar una cadena necesitamos hacer esto
     cout << "Copying a string: " << myString2 << " into " << myString << endl;
-    strcpy(myString, myString2); // myString now contains " World"
+    strcpy(myString, myString2); // myString ahora contiene " World"
     cout << "My string value after copying: " << myString << endl;
 
-    //As you can see, working with strings in C is a pain.
-    //Fortunately, C++ introduced a new type called std::string that is much more convenient to use.
+    //Como puedes ver, trabajar con cadenas en C es una molestia.
+    //Afortunadamente, C++ introdujo un nuevo tipo llamado std::string que es mucho más conveniente de usar.
     
-    //std::string is a class that encapsulates a dynamic array of characters.
-    //It manages the array's size through an internal counter, 
-    // and provides member functions for string manipulation.
-    //Because std::string is a class, we can use the . operator to access its member functions.
-    //From now on, we will use std::string instead of char arrays to store strings.
-
+    //std::string es una clase que encapsula un arreglo dinámico de caracteres.
+    //Maneja el tamaño del arreglo a través de un contador interno, 
+    // y proporciona funciones miembro para la manipulación de cadenas.
+    //Debido a que std::string es una clase, podemos usar el operador . para acceder a sus funciones miembro.
+    // std::string es la forma moderna de trabajar con cadenas en C++.
     string myString3 = "Hello";
 
-    //if we want to concatenate two strings we need to do this
-
+    //si queremos concatenar dos cadenas necesitamos hacer esto
     string myString4 = " World";
     cout << "Concatenating two strings: " << myString3 << " and" << myString4 << endl;
-    myString3 += myString4; // myString now contains "Hello World"
+    myString3 += myString4; // myString ahora contiene "Hello World"
 
-    //if we want to get the length of a string we need to do this
+    //si queremos obtener la longitud de una cadena necesitamos hacer esto
     cout << "myString length is: "<< myString3.length() << endl;
 
-    //if we want to compare two strings we need to do this
-    cout << "String comparison result is: " << myString3.compare(myString4)<< endl; // returns 0 if equal, < 0 if myString comes before myString2, > 0 if myString comes after myString2
+    //si queremos comparar dos cadenas necesitamos hacer esto
+    cout << "String comparison result is: " << myString3.compare(myString4)<< endl; // retorna 0 si son iguales, < 0 si myString viene antes que myString2, > 0 si myString viene después que myString2
 
-    //If we want to change the value of a string we can do this
+    //Si queremos cambiar el valor de una cadena podemos hacer esto
     cout << "Changing the value of a string: " << myString3 << " into " << myString4 << endl;
-    myString3 = myString4; // myString now contains " World"
-
-    //We won't need to worry about null terminators or buffer overflows anymore.
-
+    myString3 = myString4; // myString ahora contiene " World"
 
     return 0;
 }
+
+/*
+RESUMEN: ¿Qué son las cadenas (strings)?
+
+1. CADENAS ESTILO C (char arrays):
+   - Requieren manejo manual del tamaño y memoria
+   - Usan terminador nulo (\0) para marcar el final
+   - Funciones como strcpy(), strcat(), strlen(), strcmp()
+   - Propensos a errores: desbordamiento de búfer, corrupción de memoria
+
+2. CADENAS MODERNAS C++ (std::string):
+   - Manejo automático de memoria y tamaño
+   - Operadores intuitivos: +=, =, comparación directa
+   - Métodos integrados: .length(), .compare()
+   - Seguras y fáciles de usar
+
+CONCEPTOS CLAVE:
+- Terminador nulo (\0) en cadenas C
+- Diferencia entre arreglos estáticos vs manejo dinámico
+- Evolución de C a C++ en el manejo de cadenas
+- Ventajas de la programación orientada a objetos para tipos de datos
+*/

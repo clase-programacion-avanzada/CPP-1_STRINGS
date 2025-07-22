@@ -1,97 +1,95 @@
-// Example of streams in C++
+// Ejemplo de streams en C++
 #include <iostream>
 #include <sstream>
 
 using namespace std;
 
-//In C++, streams are used to perform input and output operations.
-//They are a series of bytes that are transferred from the source to the destination.
-//For example, from a file to the screen, from a file to a file, from a program to a file, from a program to the screen, etc.
-//The source or destination can be a device, file, or memory.
-//Streams are used to read and write data to and from the standard input/output devices, files, and memory.
-
-
+//En C++, los streams se usan para realizar operaciones de entrada y salida.
+//Son una serie de bytes que se transfieren desde la fuente hasta el destino.
+//Por ejemplo, de un archivo a la pantalla, de un archivo a un archivo, de un programa a un archivo, de un programa a la pantalla, etc.
+//La fuente o destino puede ser un dispositivo, archivo, o memoria.
+//Los streams se usan para leer y escribir datos desde y hacia los dispositivos estándar de entrada/salida, archivos, y memoria.
 
 
 int main () {
 
-    //We already know two types of streams: cin (standard input stream) and cout (standard output stream).
-    //cin and cout are part of the iostream library, which is why we need to include it at the beginning of our program.
-    // << is the insertion operator, and >> is the extraction operator
-    //The insertion operator (<<) is used to write the data to the standard output device.
+    //Ya conocemos dos tipos de streams: cin (stream de entrada estándar) y cout (stream de salida estándar).
+    //cin y cout son parte de la librería iostream, que es por lo que necesitamos incluirla al inicio de nuestro programa.
+    // << es el operador de inserción, y >> es el operador de extracción
+    //El operador de inserción (<<) se usa para escribir datos al dispositivo de salida estándar.
     cout << "Write a number:" << endl;
-    //The extraction operator (>>) is used to read the data from the standard input device.
+    //El operador de extracción (>>) se usa para leer datos del dispositivo de entrada estándar.
     int number;
     cin >> number;
 
     cout << "You entered: " << number << endl;
 
-    //We can also use the stringstream class to treat strings as streams.
-    //This is useful to operate on strings in the same way we operate on streams.
-    //We can use the stringstream class to treat strings as streams.
+    //También podemos usar la clase stringstream para tratar strings como streams.
+    //Esto es útil para operar en strings de la misma forma en que operamos en streams.
+    //Podemos usar la clase stringstream para tratar strings como streams.
 
-    //The stringstream class is used to operate on strings.
-    //It is used to read from and write to strings.
+    //La clase stringstream se usa para operar en strings.
+    //Se usa para leer desde y escribir hacia strings.
     stringstream ss;
 
-    //We can use the insertion operator (<<) to write to the string.
+    //Podemos usar el operador de inserción (<<) para escribir al string.
     ss << "Hello World";
 
-    //We can use the extraction operator (>>) to read from the string.
+    //Podemos usar el operador de extracción (>>) para leer del string.
     string myString;
     ss >> myString;
 
     cout << "The string is: " << myString << endl;
 
-    //We can also use the stringstream class to convert strings to numbers and vice versa.
-    //We can use the insertion operator (<<) to write to the string.
+    //También podemos usar la clase stringstream para convertir strings a números y viceversa.
+    //Podemos usar el operador de inserción (<<) para escribir al string.
     ss << 123;
 
-    //We can use the extraction operator (>>) to read from the string.
+    //Podemos usar el operador de extracción (>>) para leer del string.
     int myNumber;
     ss >> myNumber;
 
     cout << "The number is: " << myNumber << endl;
 
-    //We can initialize a stringstream with a string.
+    //Podemos inicializar un stringstream con un string.
     stringstream ss2("Hello World");
 
-    //We can use the str() function to get the string from the stringstream.
+    //Podemos usar la función str() para obtener el string del stringstream.
     cout << "The string is: " << ss2.str() << endl << endl;
 
-    //We can use the str() function to set the string of the stringstream.
+    //Podemos usar la función str() para establecer el string del stringstream.
     ss2.str("Goodbye World");
 
-    //We can use the str() function to get the string from the stringstream.
+    //Podemos usar la función str() para obtener el string del stringstream.
     cout << "The string is: " << ss2.str() << endl << endl;
 
-    //Normally, you will see that getline is used in conjunction with the stringstream class, cin, or a file.
-    //The getline function is used to read a line from a stream.
+    //Normalmente, verás que getline se usa en conjunto con la clase stringstream, cin, o un archivo.
+    //La función getline se usa para leer una línea de un stream.
 
     stringstream ss3("Hello World");
 
     string line;
 
-    //We can use the getline function to read a line from the stringstream.
+    //Podemos usar la función getline para leer una línea del stringstream.
     getline(ss3, line);
 
     cout << "The line is: " << line << endl << endl;
     
-    //spoiler from workshop, we can use stringstream and getline to split a string into tokens.
-    //We cound also use getline with a third parameter to specify the delimiter.
+    //spoiler del taller, podemos usar stringstream y getline para dividir un string en tokens.
+    //También podríamos usar getline con un tercer parámetro para especificar el delimitador.
     stringstream ss4("Hello,World");
 
     string token;
 
-    //We can use the getline function to read a token from the stringstream.
+    //Podemos usar la función getline para leer un token del stringstream.
     getline(ss4, token, ',');
     cout << "The token is: " << token << endl << endl;
 
-    //if we use again the getline function, it will read the rest of the string
+    //si usamos de nuevo la función getline, leerá el resto del string
     getline(ss4, token, ',');
     cout << "The token is: " << token << endl << endl;
 
-    //We can also check if the stringstream has reached the end of the string using eof.
+    //También podemos verificar si el stringstream ha llegado al final del string usando eof.
     stringstream ss5("Hello World");
 
     string word;
@@ -101,6 +99,49 @@ int main () {
         cout << "The word is: " << word << endl;
     }
     
-    
   return 0;
 }
+
+/*
+RESUMEN: ¿Qué son los Streams en C++?
+
+1. CONCEPTO DE STREAMS:
+   - Serie de bytes transferidos entre fuente y destino
+   - Abstracción para operaciones de entrada/salida (I/O)
+   - Fuente/destino: dispositivos, archivos, memoria
+
+2. STREAMS BÁSICOS (iostream):
+   - cin: stream de entrada estándar (teclado)
+   - cout: stream de salida estándar (pantalla)
+   - Operadores: << (inserción), >> (extracción)
+
+3. STRINGSTREAM CLASE:
+   - Trata strings como streams
+   - Permite operaciones de I/O en strings
+   - Útil para conversiones string ↔ números
+   - Métodos principales: str(), << (inserción), >> (extracción)
+
+4. FUNCIÓN GETLINE:
+   - Lee líneas completas desde un stream
+   - Sintaxis: getline(stream, variable)
+   - Con delimitador: getline(stream, variable, delimitador)
+   - Útil para parsing y tokenización de strings
+
+5. CONTROL DE FLUJO:
+   - eof(): verifica fin de stream
+   - Loops con streams para procesamiento secuencial
+   - Manejo seguro de datos de longitud variable
+
+APLICACIONES PRÁCTICAS:
+- Conversión entre tipos de datos
+- Parsing de strings con delimitadores
+- Procesamiento de entrada de usuario
+- Manipulación y análisis de texto
+- Preparación para operaciones con archivos
+
+VENTAJAS DE STREAMS:
+- Interfaz consistente para diferentes tipos de I/O
+- Manejo automático de conversiones de tipos
+- Sintaxis intuitiva con operadores
+- Integración natural con STL y algoritmos C++
+*/

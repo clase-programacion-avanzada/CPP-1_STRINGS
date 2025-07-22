@@ -1,4 +1,4 @@
-// comparing apples with apples
+// comparando peras con peras
 #include <iostream>
 //https://stackoverflow.com/questions/9257665/difference-between-string-and-string-h
 #include <string.h>
@@ -7,47 +7,47 @@ using namespace std;
 
 int main () {
 
-      // Take any string
+      // Tomamos cualquier cadena
     string s = "dog:cat";
  
-    // Find position of ':' using find()
+    // Encontrar la posición de ':' usando find()
     /*
         int find(const string& str, size_t pos = 0) const;
-            const string& str: the string to be searched
-            size_t pos: the position to start the search
-            return: the position of the first character of the first match
-                    or string::npos if no match is found
+            const string& str: la cadena a ser buscada
+            size_t pos: la posición donde iniciar la búsqueda
+            return: la posición del primer carácter de la primera coincidencia
+                    o string::npos si no se encuentra coincidencia
     */
     int pos = s.find(":");
     
     /*
         string substr(size_t pos = 0, size_t len = npos) const;
-            size_t pos: the position of the first character to be returned
-            size_t len: the number of characters to be returned
-            return: the string from the position pos to the position pos+len
+            size_t pos: la posición del primer carácter a ser retornado
+            size_t len: el número de caracteres a ser retornados
+            return: la cadena desde la posición pos hasta la posición pos+len
     */
-    // Copy substring after pos
+    // Copiar subcadena después de pos
     string sub = s.substr(pos + 1);
  
-    // prints the result
+    // imprime el resultado
     cout << "String is: " << sub<<endl;
     cout << endl;
  
     string s1 = "Javeriana";
  
-    // Copy three characters of s1 (starting
-    // from position 1)
+    // Copia tres caracteres de s1 (empezando
+    // desde la posición 1)
     string r = s1.substr(0, 4);
  
-    // prints the result
+    // imprime el resultado
     cout << "String is: " << r << endl;
     
-    /*We can find length of string in three different ways: */
+    /*Podemos encontrar la longitud de la cadena de tres maneras diferentes: */
     cout << "String length using length() is: " << s1.length() << endl;
     cout << "String length using size() is: " << s1.size() << endl;
     cout << "String length using strlen is: " << strlen(s1.c_str())<< endl;
     cout << endl;
-    /*We can also get a particular character inside of a string treating it as an array*/
+    /*También podemos obtener un carácter particular dentro de una cadena tratándola como un arreglo*/
     s1[s1.size()-1];
     cout << "Character at position 1 is: " << s1[1] << endl;
     cout << "Character at position 2 is: " << s1[2] << endl;
@@ -55,7 +55,7 @@ int main () {
     cout << "Character at position 4 is: " << s1[4] << endl;
     cout << endl;
 
-    /*or using the function .at*/
+    /*o usando la función .at*/
     cout << "Character at position 1 is: " << s1.at(1) << endl;
     cout << "Character at position 2 is: " << s1.at(2) << endl;
     cout << "Character at position 3 is: " << s1.at(3) << endl;
@@ -65,23 +65,23 @@ int main () {
   string str1 = "green apple";
   //string str1 ("green apple");
   string str2 ("red apple");
-    /*  parameters of compare function
+    /*  parámetros de la función compare
         int compare (const string& str)
-            const string& str: the string to be compared
-            return: 0 if the strings are equal
-                    1 if the first string is greater than the second
-                    -1 if the first string is less than the second
+            const string& str: la cadena a ser comparada
+            return: 0 si las cadenas son iguales
+                    1 si la primera cadena es mayor que la segunda
+                    -1 si la primera cadena es menor que la segunda
     */
   if (str1.compare(str2) != 0)
     cout << str1 << " is not " << str2 << '\n';
     /*
     int compare (size_t pos, size_t len, const string& str) const;
-            size_t pos: the position of the first character to be compared
-            size_t len: the number of characters to be compared
-            const string& str: the string to be compared
-            return: 0 if the strings are equal
-                    1 if the first string is greater than the second
-                    -1 if the first string is less than the second
+            size_t pos: la posición del primer carácter a ser comparado
+            size_t len: el número de caracteres a ser comparados
+            const string& str: la cadena a ser comparada
+            return: 0 si las cadenas son iguales
+                    1 si la primera cadena es mayor que la segunda
+                    -1 si la primera cadena es menor que la segunda
     
     */
   if (str1.compare(6,5,"apple") == 0)
@@ -92,26 +92,26 @@ int main () {
     /*
      int compare (size_t pos, size_t len, const string& str,
              size_t subpos, size_t sublen = npos) const;    
-            size_t pos: the position of the first character to be compared
-            size_t len: the number of characters to be compared
-            const string& str: the string to be compared
-            size_t subpos: the position of the first character to be compared
-            size_t sublen: the number of characters to be compared
-            return: 0 if the strings are equal
-                    1 if the first string is greater than the second
-                    -1 if the first string is less than the second
+            size_t pos: la posición del primer carácter a ser comparado
+            size_t len: el número de caracteres a ser comparados
+            const string& str: la cadena a ser comparada
+            size_t subpos: la posición del primer carácter a ser comparado
+            size_t sublen: el número de caracteres a ser comparados
+            return: 0 si las cadenas son iguales
+                    1 si la primera cadena es mayor que la segunda
+                    -1 si la primera cadena es menor que la segunda
     */
   if (str1.compare(6,5,str2,4,5) == 0)
     cout << "therefore, both are apples\n";
 
-  /*Also, we can concatenate strings using the operator '+' */
+  /*También podemos concatenar cadenas usando el operador '+' */
   string token1 = "Hello";
   string token2 = "World";
 
   string result = token1 + " " + token2;
   cout << result <<endl;
  
-  /*How can I know if a string is empty?*/
+  /*¿Cómo puedo saber si una cadena está vacía?*/
   string void_string = "";
 
   if (void_string.empty()) {
@@ -120,3 +120,45 @@ int main () {
 
   return 0;
 }
+
+/*
+RESUMEN: Operaciones con Cadenas (String Operations)
+
+1. BÚSQUEDA Y EXTRACCIÓN:
+   - find(): Busca subcadenas y retorna posición o string::npos
+   - substr(): Extrae porciones de cadenas con posición y longitud
+   - Ejemplo: "dog:cat" → find(":") → substr() → "cat"
+
+2. MEDICIÓN DE LONGITUD:
+   - .length(): Método preferido para std::string
+   - .size(): Equivalente a length(), retorna el mismo valor
+   - strlen(): Función C que requiere conversión con .c_str()
+
+3. ACCESO A CARACTERES:
+   - Operador []: Acceso directo por índice (s[0], s[1]...)
+   - Método .at(): Acceso seguro con verificación de límites
+   - Ambos permiten lectura y modificación de caracteres individuales
+
+4. COMPARACIÓN DE CADENAS:
+   - compare(): Método completo con múltiples variantes
+     * compare(str): Comparación completa
+     * compare(pos, len, str): Comparación parcial
+     * compare(pos, len, str, subpos, sublen): Comparación de subcadenas
+   - Retorna: 0 (iguales), >0 (primera mayor), <0 (primera menor)
+
+5. CONCATENACIÓN Y MANIPULACIÓN:
+   - Operador +: Concatenación de cadenas ("Hello" + " World")
+   - Operador +=: Adición en lugar (str1 += str2)
+   - Asignación directa con operador =
+
+6. VERIFICACIÓN DE ESTADO:
+   - empty(): Verifica si la cadena está vacía
+   - Útil para validación antes de operaciones
+
+CONCEPTOS CLAVE:
+- std::string maneja automáticamente la memoria y el tamaño
+- Indexación basada en 0 (primer carácter en posición 0)
+- string::npos como valor de "no encontrado" en búsquedas
+- Diferencia entre métodos C++ (.length()) y funciones C (strlen())
+- Flexibilidad en comparaciones: completas, parciales, por posición
+*/
