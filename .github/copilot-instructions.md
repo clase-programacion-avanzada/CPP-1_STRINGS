@@ -1,16 +1,24 @@
 # C++ Educational Examples - AI Coding Guide
 
 ## Project Overview
-This is an educational C++ project focusing on string manipulation and templates, structured as progressive learning examples for "Programación Avanzada" (Advanced Programming). The codebase demonstrates the evolution from C-style strings to modern C++ string handling and generic programming concepts.
+This is an educational C++ project focusing on string manipulation, structured as progressive learning examples for "Programación Avanzada" (Advanced Programming). The codebase demonstrates the evolution from C-style strings to modern C++ string handling through a hierarchical learning approach.
 
 ## Architecture & Learning Flow
 
-### Sequential Learning Structure
-Files are numbered to indicate learning progression:
-- `0_what_are_strings.cpp` - C-style vs C++ strings fundamentals
-- `1_strings_operations.cpp` - String operations (find, substr, compare)
-- `2_streams.cpp` - stringstream and stream operations
-- `3_templates.cpp` - Generic programming with templates
+### Hierarchical Learning Structure
+Files follow a hierarchical numbering system to indicate detailed learning progression:
+
+#### **Level 0: String Fundamentals**
+- `0_0_0_c_strings_declaration.cpp` - C-string declaration methods
+- `0_0_1_strings_declaration.cpp` - std::string declaration methods
+- `0_1_0_c_strings_operations.cpp` - Basic C-string operations
+- `0_1_1_c_strings_problems.cpp` - Common C-string problems and pitfalls
+- `0_1_1_strings_operations.cpp` - Modern std::string operations
+- `0_2_0_c_strings_util_functions.cpp` - C-string utility functions
+- `0_2_1_strings_util_functions.cpp` - std::string utility functions
+
+#### **Level 1: Advanced Concepts**
+- `1_streams.cpp` - Stream operations and string processing
 
 ### Key Educational Patterns
 
@@ -26,10 +34,11 @@ string myString3 = "Hello";
 myString3 += myString4;
 ```
 
-**Progressive Template Complexity**: Templates are introduced incrementally:
-- Single type parameters: `template <typename T>`
-- Multiple type parameters: `template <typename T, typename U>`
-- Template structs: `Pair<int>`, `List<T>`
+**Progressive Complexity**: Each level builds upon the previous:
+- **0.0.x**: Declaration fundamentals (C vs C++)
+- **0.1.x**: Basic operations and common problems
+- **0.2.x**: Utility functions and advanced techniques
+- **1.x**: Stream processing and I/O operations
 
 **Educational Comments**: All files include extensive inline comments explaining concepts, with external reference links to GeeksforGeeks, Microsoft Learn, and Python Tutor visualizations.
 
@@ -45,38 +54,47 @@ clang++ -fcolor-diagnostics -fansi-escape-codes -g ${file} -o ${fileBasenameNoEx
 ### Running Examples
 Each `.cpp` file compiles to its own executable:
 ```bash
-./0_what_are_strings
-./1_strings_operations  
-./3_templates
+./0_0_0_c_strings_declaration
+./0_0_1_strings_declaration
+./0_1_0_c_strings_operations
+./0_1_1_strings_operations
+./0_1_1_c_strings_problems
+./0_2_0_c_strings_util_functions
+./0_2_1_strings_util_functions
+./1_streams
 ```
 
 ### File Structure Conventions
-- Numbered files (`0_`, `1_`, etc.) indicate teaching sequence
-- `example_*` files contain supplementary practice code
+- Hierarchical numbering (0.0.0, 0.0.1, etc.) indicates detailed learning sequence
+- Even numbers (.0, .2) typically represent C-style approaches
+- Odd numbers (.1) typically represent modern C++ approaches
+- Level 0: String fundamentals, Level 1: Advanced concepts
 
 ## Project-Specific Patterns
 
-### Template Design Philosophy
-- Always use `typename T` (not `class T`) for consistency
-- Template instantiation is explicit where educational: `myMax<int>(3, 7)`
-- Struct templates require explicit type specification: `Pair<int> p1(10, 20)`
+### String Handling Philosophy
+- Focus on evolution from C-style strings to modern C++ std::string
+- Direct comparison between unsafe C functions and safe C++ methods
+- Progressive complexity from basic declaration to advanced operations
+- Emphasis on memory safety and modern programming practices
 
 ### String Operations Focus
 Core string methods demonstrated across examples:
 - `.find()`, `.substr()`, `.length()`, `.size()`, `.compare()`, `.empty()`
 - Stream operations with `stringstream`, `getline()` with custom delimiters
 - C-style string functions for comparison: `strlen()`, `strcpy()`, `strcat()`, `strcmp()`, `strchr()`
+- Problem demonstration: buffer overflow, memory management issues
 
 ### Educational Reference Integration
-Files include live code visualization links (Python Tutor) in comments for complex examples, particularly template instantiation and string memory management.
+Files include live code visualization links (Python Tutor) in comments for complex examples, particularly string memory management and C vs C++ comparisons.
 
 ## Development Guidelines
 
 When adding new examples:
-- Follow the numbered naming convention for sequential learning
+- Follow the hierarchical naming convention for sequential learning (0.0.0, 0.0.1, etc.)
 - Include comprehensive comments explaining the "why" behind each concept
 - Contrast modern C++ approaches with legacy C methods where relevant
-- Add Python Tutor visualization links for complex memory/template scenarios
+- Add Python Tutor visualization links for complex memory/string scenarios
 - Maintain the educational progression from basic to advanced concepts
 - Do not use any std containers (e.g., std::vector)
 - Ensure all examples are self-contained and executable without external dependencies
