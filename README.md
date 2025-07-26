@@ -1,10 +1,10 @@
-# Programación Avanzada - Manejo de Cadenas y Plantillas en C++
+# Programación Avanzada - Manejo de Cadenas en C++
 
 ## Descripción del Proyecto
 
-Este repositorio contiene ejemplos educativos progresivos para el curso de **Programación Avanzada**, enfocados en la evolución del manejo de cadenas desde el enfoque tradicional de C hasta las capacidades modernas de C++, incluyendo conceptos avanzados de programación genérica con plantillas (templates).
+Este repositorio contiene ejemplos educativos progresivos para el curso de **Programación Avanzada**, enfocados en la evolución del manejo de cadenas desde el enfoque tradicional de C hasta las capacidades modernas de C++. Los ejemplos están diseñados para demostrar paso a paso la transición de técnicas de programación heredadas a enfoques modernos.
 
-Los ejemplos están diseñados para demostrar la transición de técnicas de programación heredadas a enfoques modernos, mostrando las ventajas de la programación orientada a objetos y la programación genérica en C++.
+El proyecto sigue una metodología de aprendizaje incremental donde cada concepto se construye sobre el anterior, mostrando las ventajas prácticas de la programación moderna en C++.
 
 ---
 
@@ -12,167 +12,178 @@ Los ejemplos están diseñados para demostrar la transición de técnicas de pro
 
 ### 📚 Progresión Temática
 
-Los archivos están numerados para indicar la secuencia de aprendizaje recomendada:
+Los archivos están numerados siguiendo una jerarquía de conceptos para facilitar el aprendizaje secuencial:
 
-1. **Fundamentos de Cadenas** (`0_what_are_strings.cpp`)
-2. **Operaciones con Cadenas C vs C++** (`1_c_strings_operations.cpp` y `1_strings_operations.cpp`)
-3. **Flujos de Datos** (`2_streams.cpp`)
-4. **Programación Genérica** (`3_templates.cpp`)
-5. **Tokenización Avanzada** (`4_c_string_tokenization.cpp` y `4_string_tokenization.cpp`)
+#### **Nivel 0: Fundamentos de Cadenas**
+
+- **0.0.0** → Declaración de C-strings
+- **0.0.1** → Declaración de std::string  
+- **0.1.0** → Operaciones básicas con C-strings
+- **0.1.1** → Operaciones básicas con std::string y problemas comunes con C-strings
+- **0.2.0** → Funciones utilitarias de C-strings
+- **0.2.1** → Funciones utilitarias de std::string
+
+#### **Nivel 1: Conceptos Avanzados**
+
+- **1** → Streams y manejo de flujos de datos
 
 ---
 
 ## Contenido Detallado
 
-### 🔤 **0. ¿Qué son las Cadenas?** (`0_what_are_strings.cpp`)
+### 🔤 **0.0 - Declaración de Cadenas**
 
-**Conceptos fundamentales:**
-- **Cadenas estilo C**: Arreglos de caracteres con terminador nulo (`\0`)
-- **Cadenas modernas C++**: Clase `std::string` con manejo automático de memoria
-- **Gestión de memoria**: Manual vs automática
-- **Operaciones básicas**: Comparación entre enfoques C y C++
+#### **0.0.0 - Declaración de C-strings** (`0_0_0_c_strings_declaration.cpp`)
 
-**Puntos clave:**
-- Problemas del enfoque C: desbordamiento de búfer, gestión manual de memoria
-- Ventajas de `std::string`: seguridad, facilidad de uso, operadores intuitivos
-- Transición histórica de C a C++ en el manejo de cadenas
+**Conceptos fundamentales de C-strings:**
 
----
+- **Arreglos de caracteres**: Terminados en `\0` (null terminator)
+- **Diferentes métodos de inicialización**:
+  - Literal de cadena: `char str[] = "Hola"`
+  - Especificación de tamaño: `char str[20] = "Hola"`
+  - Carácter por carácter: `char str[] = {'H', 'o', 'l', 'a', '\0'}`
+  - Punteros a literal: `const char* str = "Hola"`
+- **Gestión manual de memoria y terminadores nulos**
+- **Visualización interactiva** con enlaces a Python Tutor
 
-### ⚙️ **1. Operaciones con Cadenas**
+#### **0.0.1 - Declaración de std::string** (`0_0_1_strings_declaration.cpp`)
 
-#### **1a. Operaciones Estilo C** (`1_c_strings_operations.cpp`)
-**Funciones tradicionales de C:**
-- `strchr()`: Búsqueda de caracteres individuales
-- `strstr()`: Búsqueda de subcadenas
-- `strncpy()`: Copia controlada con gestión manual del terminador nulo
-- `strlen()`: Medición de longitud
-- `strcmp()`: Comparación lexicográfica
+**Métodos modernos de declaración:**
 
-**Características del enfoque C:**
-- Control directo de memoria y punteros
-- Riesgo de desbordamiento de búfer
-- Gestión manual de terminadores nulos
-- Eficiencia en casos específicos
-
-#### **1b. Operaciones Modernas C++** (`1_strings_operations.cpp`)
-**Métodos de la clase `std::string`:**
-- `.find()`: Búsqueda flexible con retorno de posición o `string::npos`
-- `.substr()`: Extracción de subcadenas con parámetros de posición y longitud
-- `.length()` y `.size()`: Medición automática
-- `.compare()`: Comparación completa con múltiples variantes
-- `.empty()`: Verificación de estado
-
-**Ventajas del enfoque C++:**
-- Operadores intuitivos (`+`, `+=`, `==`)
-- Verificación automática de límites
-- Gestión transparente de memoria
-- Métodos integrados y consistentes
+- **Constructor por defecto**: Cadena vacía automática
+- **Desde literales**: Inicialización directa e indirecta
+- **Constructor de copia**: Gestión automática de memoria
+- **Desde C-strings**: Conversión transparente
+- **Constructor con repetición**: `std::string(5, 'A')`
+- **Subcadenas**: Extracción de partes de otras cadenas
+- **Ventajas sobre C-strings**: Seguridad y simplicidad
 
 ---
 
-### 🌊 **2. Flujos de Datos (Streams)** (`2_streams.cpp`)
+### ⚙️ **0.1 - Operaciones con Cadenas**
 
-**Conceptos de streams:**
-- **Abstracción de I/O**: Interfaz consistente para diferentes tipos de entrada/salida
-- **Streams básicos**: `cin` (entrada), `cout` (salida)
+#### **0.1.0 - Operaciones con C-strings** (`0_1_0_c_strings_operations.cpp`)
+
+**Funciones tradicionales de la biblioteca C:**
+
+- **Búsqueda**: `strchr()`, `strstr()`
+- **Medición**: `strlen()`
+- **Copia**: `strcpy()`, `strncpy()`
+- **Concatenación**: `strcat()`, `strncat()`
+- **Comparación**: `strcmp()`, `strncmp()`
+- **Conversiones**: `atoi()`, `atof()`, `snprintf()`
+- **Problemas comunes**: Buffer overflow, gestión manual de memoria
+
+#### **0.1.1 - Operaciones con std::string y Problemas de C-strings** (`0_1_1_strings_operations.cpp` y `0_1_1_c_strings_problems.cpp`)
+
+**Métodos modernos de std::string:**
+
+- **Búsqueda segura**: `.find()` con retorno `string::npos`
+- **Extracción**: `.substr()` con verificación automática de límites
+- **Medición**: `.length()`, `.size()`, `.empty()`
+- **Comparación**: `.compare()` y operadores (`==`, `!=`, `<`, `>`)
+- **Modificación**: `.append()`, `.insert()`, `.erase()`, `.replace()`
+
+**Problemas demostrados de C-strings:**
+
+- Buffer overflow y seguridad
+- Gestión compleja de memoria
+- Errores comunes y cómo evitarlos
+
+---
+
+### 🔧 **0.2 - Funciones Utilitarias**
+
+#### **0.2.0 - Funciones Utilitarias de C-strings** (`0_2_0_c_strings_util_functions.cpp`)
+
+**Implementaciones manuales y bibliotecas C:**
+
+- **Tokenización**: `strtok()` y sus limitaciones
+- **Validación**: Funciones de verificación manual
+- **Manipulación**: Transformaciones carácter por carácter
+- **Conversiones**: Entre tipos numéricos y cadenas
+
+#### **0.2.1 - Funciones Utilitarias de std::string** (`0_2_1_strings_util_functions.cpp`)
+
+**Herramientas modernas integradas:**
+
+- **Transformaciones**: `.transform()`, `.tolower()`, `.toupper()`
+- **Búsqueda avanzada**: Múltiples criterios y patrones
+- **Validación integrada**: Métodos seguros y eficientes
+- **Operaciones en lote**: Procesamiento de múltiples cadenas
+
+---
+
+### 🌊 **1 - Streams y Flujos de Datos** (`1_streams.cpp`)
+
+**Conceptos fundamentales de streams:**
+
+- **Abstracción de I/O**: Interfaz unificada para entrada/salida
+- **Streams estándar**: `cin`, `cout`, `cerr`
 - **Operadores de flujo**: `<<` (inserción), `>>` (extracción)
 
-**StringStream avanzado:**
-- Clase `stringstream`: Tratamiento de cadenas como flujos de datos
-- Conversiones automáticas entre tipos
-- Función `getline()` con delimitadores personalizados
-- Control de flujo con `.eof()`
+**StringStream para procesamiento avanzado:**
+
+- **Clase `stringstream`**: Tratamiento de cadenas como flujos
+- **Conversiones automáticas**: Entre diferentes tipos de datos
+- **Parsing con delimitadores**: `getline()` personalizado
+- **Control de flujo**: `.eof()`, `.fail()`, `.clear()`
 
 **Aplicaciones prácticas:**
-- Conversión entre strings y números
-- Parsing de datos con delimitadores
-- Preparación para tokenización
-- Interfaz unificada para operaciones de I/O
+
+- Conversión segura entre strings y números
+- Parsing de datos estructurados
+- Preparación para técnicas de tokenización
+- Interfaz consistente para operaciones complejas
 
 ---
 
-### 🔧 **3. Plantillas (Templates)** (`3_templates.cpp`)
+## Metodología Educativa
 
-**Programación genérica:**
-- **Concepto**: Código que funciona con cualquier tipo de dato
-- **Instanciación**: Generación automática de código específico por tipo
-- **Reutilización**: Evita duplicación de código para diferentes tipos
+### 🎯 **Enfoque Comparativo**
 
-**Tipos de plantillas:**
-- **Plantillas de función**: `template <typename T>`
-- **Múltiples parámetros**: `template <typename T, typename U>`
-- **Plantillas de estructura**: Tipos de datos genéricos
+Cada concepto se presenta mostrando:
 
-**Características avanzadas:**
-- **Type safety**: Verificación de tipos en tiempo de compilación
-- **Instanciación**: Explícita (`myMax<int>()`) vs implícita (deducción automática)
-- **Eficiencia**: Código optimizado para cada tipo específico
+- **Problema en C**: Limitaciones y riesgos del enfoque tradicional
+- **Solución en C++**: Ventajas y mejoras del enfoque moderno
+- **Código lado a lado**: Comparaciones directas para entender diferencias
+- **Casos de uso reales**: Aplicaciones prácticas de cada técnica
 
-**Conceptos clave:**
-- Diferencias entre plantillas de función y estructura
-- Paradigma de programación genérica
+### 🔬 **Visualización Interactiva**
 
----
+- **Enlaces a Python Tutor**: Visualización paso a paso de la ejecución
+- **Gestión de memoria**: Comparación visual entre enfoques C y C++
+- **Debugging asistido**: Herramientas para entender el comportamiento del código
 
-### ✂️ **4. Tokenización de Cadenas**
+### 📈 **Progresión de Dificultad**
 
-#### **4a. Tokenización Estilo C** (`4_c_string_tokenization.cpp`)
-**Funciones tradicionales:**
-- `strtok()`: Función principal de tokenización
-- `strchr()`: Búsqueda manual de delimitadores
-- Manipulación directa con punteros e índices
-
-**Características del enfoque C:**
-- **Destructivo**: Modifica la cadena original
-- **Estado estático**: No es thread-safe
-- **Control directo**: Gestión manual de punteros
-- **Eficiencia**: Rápido para casos simples
-
-**Problemas comunes:**
-- Pérdida de contexto en tokenización simultánea
-- Riesgo de buffer overflow
-- Gestión manual de terminadores nulos
-
-#### **4b. Tokenización Moderna C++** (`4_string_tokenization.cpp`)
-**Métodos modernos:**
-- **StringStream + getline**: Con delimitadores personalizados
-- **Operador >>**: Automático para espacios en blanco
-- **find() + substr() + erase()**: Control manual completo
-- **Delimitadores múltiples**: Soporte para strings complejos
-
-**Ventajas del enfoque C++:**
-- **No destructivo**: Preserva cadenas originales
-- **Thread-safe**: Sin estado estático global
-- **Flexibilidad**: Delimitadores de múltiples caracteres
-- **Seguridad**: Verificación automática de límites
-
-**Casos de uso prácticos:**
-- Procesamiento de archivos CSV
-- Análisis de comandos
-- Parsing de URLs y rutas
-- Separación de texto en tokens
+- **Conceptos básicos**: Declaración y operaciones simples
+- **Operaciones intermedias**: Búsqueda, modificación y validación
+- **Técnicas avanzadas**: Streams, conversiones y procesamiento complejo
 
 ---
 
 ## Conceptos Transversales
 
 ### 🔄 **Evolución de C a C++**
-- **Gestión de memoria**: Manual → Automática
-- **Seguridad**: Propensa a errores → Verificación integrada
-- **Sintaxis**: Verbosa → Operadores intuitivos
-- **Mantenibilidad**: Compleja → Simplicidad de uso
 
-### 🎯 **Programación Defensiva**
+- **Gestión de memoria**: Manual → Automática
+- **Seguridad**: Propensa a errores → Verificación integrada  
+- **Sintaxis**: Verbosa → Operadores intuitivos
+- **Mantenibilidad**: Compleja → Código más limpio y legible
+
+### 🛡️ **Programación Defensiva**
+
 - **C**: Verificación manual constante de límites
-- **C++**: Protección automática con `.at()` y verificaciones internas
-- **Templates**: Type safety en tiempo de compilación
+- **C++**: Protección automática con verificaciones internas
+- **Prevención de errores**: Técnicas para evitar problemas comunes
 
 ---
 
 ## Referencias y Recursos Adicionales
 
 ### 📖 **Documentación Oficial**
+
 - [Why strtok() should be deprecated](https://stackoverflow.com/questions/44336831/why-should-strtok-be-deprecated) [Artículo]
 - [Why should strtok() generally be avoided?](https://benpfaff.org/writings/clc/strtok.html) [Artículo]
 - [Templates in c++ with examples](https://www.geeksforgeeks.org/templates-cpp/) [Artículo]
@@ -185,10 +196,9 @@ Los archivos están numerados para indicar la secuencia de aprendizaje recomenda
 - [Introduction to std::string](https://www.learncpp.com/cpp-tutorial/introduction-to-stdstring/) [Artículo]
 
 ### 🔬 **Visualización de Código**
+
 Los archivos incluyen enlaces a [Python Tutor](https://pythontutor.com) para visualización interactiva de:
-- Gestión de memoria en cadenas C vs C++
-- Instanciación de templates
-- Operaciones de tokenización paso a paso
+
 
 ---
 
@@ -201,4 +211,3 @@ Este conjunto de ejemplos está diseñado para mostrar **por qué** C++ moderno 
 - **Explicaciones conceptuales**: Comentarios extensivos en español
 - **Referencias externas**: Enlaces a documentación y visualizaciones
 - **Progresión lógica**: Conceptos construidos secuencialmente
-
