@@ -54,20 +54,20 @@ int main() {
     /*===============Subcadenas & comparaciones============*/
 
     // Subcadenas
-    std::string str = "Hola Mundo Hermoso";
+    std::string str3 = "Hola Mundo Hermoso";
 
     // substr() - Extraer subcadena
-    std::string sub1 = str.substr(5);        // "Mundo Hermoso"
-    std::string sub2 = str.substr(5, 5);     // "Mundo"
+    std::string sub1 = str3.substr(5);        // "Mundo Hermoso"
+    std::string sub2 = str3.substr(5, 5);     // "Mundo"
 
     // Comparaciones
-    std::string s1 = "abc";
-    std::string s2 = "abd";
+    std::string s6 = "abc";
+    std::string s7 = "abd";
 
-    bool equal = (s1 == s2);                 // false
-    bool less = (s1 < s2);                  // true (comparación lexicográfica)
-    int comp = s1.compare(s2);               // -1 (s1 < s2)
-    int comp2 = s1.compare(0, 2, s2, 0, 2); // 0 (primeros 2 chars son iguales)
+    bool equal = (s6 == s7);                 // false
+    bool less = (s6 < s7);                  // true (comparación lexicográfica)
+    int comp = s6.compare(s7);               // -1 (s6 < s7)
+    int comp2 = s6.compare(0, 2, s7, 0, 2); // 0 (primeros 2 chars son iguales)
     
     /*=============Conversiones============*/
 
@@ -79,13 +79,13 @@ int main() {
     double dnum = std::stod("123.45");      // 123.45
 
     // Números a string
-    std::string str1 = std::to_string(42);    // "42"
-    std::string str2 = std::to_string(3.14);  // "3.140000"
+    std::string str8 = std::to_string(42);    // "42"
+    std::string str9 = std::to_string(3.14);  // "3.140000"
 
    
     // Conversión de string a c_string
-    std::string str = "Hola Mundo";
-    const char* c_str = str.c_str();        // "Hola Mundo" (const char*)
-    
+    std::string str10 = "Hola Mundo";
+    const char* c_str = str10.c_str();        // "Hola Mundo" (const char*)
+
     return 0;
 }
