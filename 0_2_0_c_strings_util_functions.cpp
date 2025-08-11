@@ -23,6 +23,30 @@ char* trim(char* str) {
     return str;
 }
 
+void trim2(char str[]) {
+    int start = 0;
+    int end = strlen(str) - 1;
+
+    // Eliminar espacios al inicio
+    while (str[start] == ' ' && start <= end) {
+        start++;
+    }
+
+    // Eliminar espacios al final
+    while (str[end] == ' ' && end >= start) {
+        end--;
+    }
+
+    // Mover el contenido hacia el inicio del arreglo
+    for (int i = start; i <= end; i++) {
+        str[i - start] = str[i];
+    }
+    
+    // Agregar el terminador nulo al final
+    str[end - start + 1] = '\0';
+}
+
+
 // Convertir a mayúsculas
 void to_upper(char* str) {
     while (*str) {
